@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CSS tutorial</title>
+        <link rel="stylesheet" href="./index.css" />
+    </head>
+    <body>
+    
+        <div class="container">
+            <span id="left">&#8249;</span>
+            <div class="slider">
+                <div class="slides">
+                    <div class="card">
+                        <img src="./images/van.jpg" alt="van">
+                        <p> <strong>Name : </strong> Classic van</p>
+                        <p> <strong>Price : </strong> $100,000</p>
+                        <p> <strong>Location : </strong>Paris</p>
+                    </div>
+                    <div class="card">
+                        <img src="./images/flox3.jpg" alt="" />
+                        <p><strong>name : </strong> classic car</p>
+                        <p><strong>price : </strong> $80,000</p>
+                        <p><strong>location : </strong>Canada</p>
+                    </div>
+                    <div class="card">
+                        <img src="./images/redcar.jpg" alt="" />
+                        <p><strong>name : </strong> classic red</p>
+                        <p><strong>price : </strong> $1000</p>
+                        <p><strong>location : </strong> UK</p>
+                    </div>
+                    <div class="card">
+                        <img src="./images/flox2.jpg" alt="" />
+                        <p><strong>name : </strong> classic king</p>
+                        <p><strong>price : </strong> $2000</p>
+                        <p><strong>location : </strong> USA</p>
+                    </div>
+                    <div class="card">
+                        <img src="./images/van2.jpg" alt="" />
+                        <p><strong>name : </strong> nice van</p>
+                        <p><strong>price : </strong> $600</p>
+                        <p><strong>location : </strong> London</p>
+                    </div>
+                    <div class="card">
+                        <img src="./images/van3.jpg" alt="" />
+                        <p><strong>name : </strong> stylish van</p>
+                        <p><strong>price : </strong> $1300</p>
+                        <p><strong>location : </strong> Zurich</p>
+                    </div>
+                </div>
+            </div>
+            <span id="right">&#8250;</span>
+        </div>
+        <script>
+            const right = document.querySelector('#right');
+            const left = document.querySelector('#left');
+            const slides = document.querySelector('.slides');
+            const cards = document.querySelectorAll('.card img');
+
+            //find the width
+            function findWidth(){
+                let width = window.innerWidth;
+                if(width < 550){
+                    return 1;
+                }
+                else if(width < 1000){
+                    return 2;
+                }
+                else{
+                    return 3;
+                }
+            }
+
+            let indexNumber = 0;
+            //slide right
+            right.addEventListener('click',()=>{
+                if(indexNumber < cards.length - findWidth() ){
+                indexNumber ++;
+                slide();
+                }
+            });
+
+            //slide left
+            left.addEventListener('click',()=>{
+                if(indexNumber > 0){
+                indexNumber --;
+                slide();
+                }
+            });
+
+            //slide functionality
+            function slide(){
+                let translateXvalue = - indexNumber * 362;
+                slides.style.transform = `translateX(${translateXvalue}px)`;
+            }
+
+        </script>
+    </body>
+</html>
